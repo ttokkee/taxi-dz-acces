@@ -71,6 +71,16 @@
   .mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-variant-numeric: tabular-nums;
           direction: ltr; unicode-bidi: isolate; }
 
+  .regle { display: flex; flex-wrap: wrap; gap: .35rem 1.25rem; align-items: baseline;
+           background: var(--surface2); border: 1px solid var(--bord); border-left: 3px solid var(--accent);
+           border-radius: 8px; padding: .8rem 1rem; margin-bottom: 1.25rem; font-size: .95rem; }
+  .regle__t { font-weight: 600; width: 100%; }
+  h3.bloc { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
+            color: var(--attenue); font-weight: 500; margin: 1.75rem 0 .5rem; }
+  .tag { display: inline-block; font-size: .72rem; letter-spacing: .02em; white-space: nowrap;
+         border: 1px solid var(--accent); color: var(--accent); border-radius: 999px;
+         padding: .05rem .45rem; margin-inline-start: .35rem; }
+  .tag--f { border-color: var(--succes); color: var(--succes); }
   ol.etapes { margin: 0; padding-inline-start: 1.3rem; display: flex; flex-direction: column;
               gap: .6rem; }
   ol.etapes strong { color: var(--texte); }
@@ -155,36 +165,98 @@
   </div>
 
   <h2>Comptes d'essai</h2>
-  <p class="sous">Le code de vérification est le même pour tous : <b class="mono">123456</b>.</p>
+  <p class="sous">
+    Le code de vérification est le même pour tous : <b class="mono">123456</b>. Aucun SMS n'est
+    envoyé.
+  </p>
+
+  <div class="regle">
+    <span class="regle__t">Le numéro dit le rôle</span>
+    <span><b class="mono">011</b> à <b class="mono">025</b> — chauffeurs</span>
+    <span><b class="mono">026</b> à <b class="mono">040</b> — passagers</span>
+  </div>
+
+  <h3 class="bloc">Chauffeurs</h3>
+  <p class="sous">
+    Tous <b>actifs</b> : dossier vérifié, autorisation en vigueur, véhicule actif. Tous
+    <b>hors ligne</b> — se mettre en service est votre premier geste.
+  </p>
   <div class="cadre">
     <table>
-      <thead>
-        <tr><th>Rôle</th><th>Numéro</th><th>À savoir</th></tr>
-      </thead>
+      <thead><tr><th>Numéro</th><th>Nom</th><th>Position</th></tr></thead>
       <tbody>
-        <tr>
-          <td>Chauffeur</td>
-          <td class="mono">+213 555 000 007</td>
-          <td>Mourad — actif, autorisation en vigueur. Le seul à utiliser pour recevoir des courses.</td>
-        </tr>
-        <tr>
-          <td>Passagère</td>
-          <td class="mono">+213 555 000 001</td>
-          <td>Yasmine — historique de courses, adresses enregistrées.</td>
-        </tr>
-        <tr>
-          <td>Passager</td>
-          <td class="mono">+213 555 000 004</td>
-          <td>Yacine — second compte, pour tester à deux en même temps.</td>
-        </tr>
-        <tr>
-          <td>Compte neuf</td>
-          <td class="mono">+213 555 000 005</td>
-          <td>Aucun profil : sert à voir le tout premier lancement, choix de langue compris.</td>
-        </tr>
+        <tr><td class="mono">+213 555 000 011</td><td>Mourad Cherif</td><td>Alger-centre</td></tr>
+        <tr><td class="mono">+213 555 000 012</td><td>Sofiane Belhadj</td><td>Alger-centre</td></tr>
+        <tr><td class="mono">+213 555 000 013</td><td>Amel Zerrouki <span class="tag">passagères uniquement</span></td><td>Alger-centre</td></tr>
+        <tr><td class="mono">+213 555 000 014</td><td>Karim Slimani</td><td>Hydra</td></tr>
+        <tr><td class="mono">+213 555 000 015</td><td>Nabil Ait Ahmed</td><td>Hydra</td></tr>
+        <tr><td class="mono">+213 555 000 016</td><td>Souad Meddour <span class="tag tag--f">conductrice</span></td><td>Hydra</td></tr>
+        <tr><td class="mono">+213 555 000 017</td><td>Rachid Bouzid</td><td>Bab Ezzouar</td></tr>
+        <tr><td class="mono">+213 555 000 018</td><td>Farid Benkhelifa</td><td>Bab Ezzouar</td></tr>
+        <tr><td class="mono">+213 555 000 019</td><td>Leila Hamdani <span class="tag">passagères uniquement</span></td><td>Bab Ezzouar</td></tr>
+        <tr><td class="mono">+213 555 000 020</td><td>Toufik Amrani</td><td>Kouba</td></tr>
+        <tr><td class="mono">+213 555 000 021</td><td>Hakim Boudjelal</td><td>Kouba</td></tr>
+        <tr><td class="mono">+213 555 000 022</td><td>Nawel Saidi <span class="tag tag--f">conductrice</span></td><td>Kouba</td></tr>
+        <tr><td class="mono">+213 555 000 023</td><td>Djamel Larbi</td><td>Aéroport</td></tr>
+        <tr><td class="mono">+213 555 000 024</td><td>Yacine Ould Ali</td><td>Aéroport</td></tr>
+        <tr><td class="mono">+213 555 000 025</td><td>Samir Kaci</td><td>Aéroport</td></tr>
       </tbody>
     </table>
   </div>
+
+  <h3 class="bloc">Passagers</h3>
+  <div class="cadre">
+    <table>
+      <thead><tr><th>Numéro</th><th>Nom</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">+213 555 000 026</td><td>Yasmine Benali <span class="tag tag--f">passagère</span></td></tr>
+        <tr><td class="mono">+213 555 000 027</td><td>Amine Tounsi</td></tr>
+        <tr><td class="mono">+213 555 000 028</td><td>Meriem Cherfi <span class="tag tag--f">passagère</span></td></tr>
+        <tr><td class="mono">+213 555 000 029</td><td>Walid Berkane</td></tr>
+        <tr><td class="mono">+213 555 000 030</td><td>Nadia Loucif <span class="tag tag--f">passagère</span></td></tr>
+        <tr><td class="mono">+213 555 000 031</td><td>Riad Messaoudi</td></tr>
+        <tr><td class="mono">+213 555 000 032</td><td>Sarah Benmoussa <span class="tag tag--f">passagère</span></td></tr>
+        <tr><td class="mono">+213 555 000 033</td><td>Omar Ferhat</td></tr>
+        <tr><td class="mono">+213 555 000 034</td><td>Imene Gharbi <span class="tag tag--f">passagère</span></td></tr>
+        <tr><td class="mono">+213 555 000 035</td><td>Bilal Hadjadj</td></tr>
+        <tr><td class="mono">+213 555 000 036</td><td>Lynda Ouareth <span class="tag tag--f">passagère</span></td></tr>
+        <tr><td class="mono">+213 555 000 037</td><td>Adel Zeroual</td></tr>
+        <tr><td class="mono">+213 555 000 038</td><td>Khaled Bensalem</td></tr>
+        <tr><td class="mono">+213 555 000 039</td><td>Sofia Belkaid <span class="tag tag--f">passagère</span></td></tr>
+        <tr><td class="mono">+213 555 000 040</td><td>Reda Mahiout</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="avis">
+    <p><b>Pour éprouver le filtre « passagères uniquement ».</b> Amel Zerrouki et Leila Hamdani ne
+    prennent que des passagères. Commandez depuis un passager <b>masculin</b> de leur zone : elles
+    ne doivent jamais recevoir l'offre. Depuis une passagère, si.</p>
+    <p>Souad Meddour et Nawel Saidi sont conductrices <b>sans</b> ce filtre — de quoi vérifier que
+    c'est bien le réglage qui écarte, et non le fait d'être une femme.</p>
+  </div>
+
+  <h3 class="bloc">Anciens comptes</h3>
+  <p class="sous">
+    Antérieurs à la flotte ci-dessus, conservés pour les cas qu'ils sont seuls à couvrir.
+  </p>
+  <div class="cadre">
+    <table>
+      <thead><tr><th>Numéro</th><th>Nom</th><th>Ce qu'il sert</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">+213 555 000 001</td><td>ياسمين</td><td>Passagère avec historique de courses et adresses enregistrées</td></tr>
+        <tr><td class="mono">+213 555 000 003</td><td>نادية</td><td>Conductrice active, prénom en arabe — utile pour vérifier le rendu RTL</td></tr>
+        <tr><td class="mono">+213 555 000 004</td><td>Yacine Meziane</td><td>Passager avec historique</td></tr>
+        <tr><td class="mono">+213 555 000 005</td><td>—</td><td><b>Aucun profil</b> : le seul moyen de voir le tout premier lancement, choix de langue compris</td></tr>
+        <tr><td class="mono">+213 555 000 007</td><td>Mourad Benali</td><td>Chauffeur actif, celui sur lequel les notifications ont été éprouvées</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="sous">
+    Deux autres existent et ne sont <b>pas</b> utilisables pour commander : <span class="mono">000002</span>
+    (dossier en attente de vérification) et <span class="mono">000006</span> (dossier incomplet).
+    Ils servent à voir l'onboarding chauffeur du côté où il n'est pas fini.
+  </p>
 
   <h2>Avant de commander</h2>
   <p class="sous">Trois réglages, dans cet ordre. Sans le premier, rien n'arrive sur le téléphone.</p>
