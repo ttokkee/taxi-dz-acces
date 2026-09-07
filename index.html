@@ -1,0 +1,241 @@
+<!doctype html>
+<!--
+  Page d'accès aux builds d'essai — envoyée une fois aux testeurs.
+
+  SOURCE DE VÉRITÉ : ce fichier, dans le monorepo privé. Publié vers ttokkee/taxi-dz-acces par
+  `scripts/publier-page-acces.sh`. Ne pas éditer côté dépôt public.
+
+  ⚠️ CETTE PAGE EST PUBLIQUE ET PORTE DES IDENTIFIANTS D'ESSAI. C'est un choix assumé — elle doit
+  pouvoir s'envoyer en une fois, sans échange de codes en parallèle — mais il a une conséquence :
+  quiconque trouve l'adresse peut se connecter à l'environnement d'essai. Cet environnement ne
+  contient que des données fictives et aucun argent n'y circule. Le jour où ce ne sera plus vrai,
+  cette page doit disparaître ou perdre ses codes.
+-->
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Taxi DZ — accès aux essais</title>
+<style>
+  :root {
+    --fond: #0D1014; --surface: #161B21; --surface2: #1E252D; --bord: #232A33;
+    --texte: #F4F6F8; --attenue: #93A0AD; --accent: #E8912D; --accent-ink: #160E03;
+    --succes: #4FC08A; --alerte: #F0736A;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--fond); color: var(--texte);
+    font-family: system-ui, -apple-system, "Segoe UI", "Noto Sans Arabic", Roboto, sans-serif;
+    line-height: 1.6; font-size: 16px;
+  }
+  .page { max-width: 46rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+
+  header { border-bottom: 1px solid var(--bord); padding-bottom: 1.5rem; }
+  .marque { font-size: 1.05rem; font-weight: 700; letter-spacing: .02em; }
+  .marque span { font-weight: 400; color: var(--attenue); }
+  h1 { font-size: 1.6rem; margin: .75rem 0 .4rem; line-height: 1.2; }
+  .chapo { color: var(--attenue); margin: 0; }
+
+  h2 { font-size: 1.1rem; margin: 2.5rem 0 .25rem; }
+  .sous { color: var(--attenue); font-size: .93rem; margin: 0 0 1rem; }
+
+  .acces { display: flex; flex-direction: column; gap: .75rem; }
+  .carte {
+    display: flex; flex-wrap: wrap; gap: .75rem 1rem; align-items: center;
+    justify-content: space-between; background: var(--surface); border: 1px solid var(--bord);
+    border-radius: 10px; padding: .9rem 1rem;
+  }
+  .carte .quoi { display: flex; flex-direction: column; gap: .15rem; min-width: 12rem; }
+  .carte .titre { font-weight: 600; }
+  .carte .detail { font-size: .86rem; color: var(--attenue); }
+  .bouton {
+    background: var(--accent); color: var(--accent-ink); text-decoration: none;
+    font-weight: 600; padding: .55rem 1.1rem; border-radius: 8px; white-space: nowrap;
+    display: inline-block; min-height: 44px; line-height: 1.9;
+  }
+  .bouton:focus-visible { outline: 3px solid var(--texte); outline-offset: 2px; }
+  .attente {
+    color: var(--attenue); font-size: .86rem; border: 1px dashed var(--bord);
+    border-radius: 8px; padding: .5rem .9rem; white-space: nowrap;
+  }
+
+  table { width: 100%; border-collapse: collapse; font-size: .93rem; }
+  .cadre { border: 1px solid var(--bord); border-radius: 10px; overflow: hidden; }
+  th { text-align: left; font-size: .74rem; letter-spacing: .08em; text-transform: uppercase;
+       color: var(--attenue); font-weight: 500; padding: .6rem .9rem;
+       border-bottom: 1px solid var(--bord); background: var(--surface2); }
+  td { padding: .65rem .9rem; border-bottom: 1px solid var(--bord); vertical-align: top; }
+  tr:last-child td { border-bottom: 0; }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-variant-numeric: tabular-nums;
+          direction: ltr; unicode-bidi: isolate; }
+
+  ol.etapes { margin: 0; padding-inline-start: 1.3rem; display: flex; flex-direction: column;
+              gap: .6rem; }
+  ol.etapes strong { color: var(--texte); }
+  ol.etapes li { color: var(--attenue); }
+
+  .avis { border: 1px solid var(--bord); border-left: 3px solid var(--accent);
+          background: var(--surface); border-radius: 8px; padding: .85rem 1rem; margin-top: 1rem; }
+  .avis.rouge { border-left-color: var(--alerte); }
+  .avis p { margin: 0; font-size: .93rem; }
+  .avis p + p { margin-top: .5rem; }
+  .avis b { color: var(--texte); }
+
+  footer { margin-top: 3rem; padding-top: 1.25rem; border-top: 1px solid var(--bord);
+           color: var(--attenue); font-size: .85rem; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="marque">Taxi DZ <span>· essais internes</span></div>
+    <h1>Installer et tester les applications</h1>
+    <p class="chapo">
+      Quatre accès, deux applications. Tout pointe sur l'environnement d'essai : les comptes, les
+      chauffeurs et les courses sont fictifs, et aucun paiement n'a lieu.
+    </p>
+  </header>
+
+  <h2>Android</h2>
+  <p class="sous">
+    Ouvrez le lien depuis le téléphone Android. Autorisez l'installation depuis cette source si le
+    système la demande. <b>C'est la seule plateforme où les notifications fonctionnent.</b>
+  </p>
+  <div class="acces">
+    <div class="carte">
+      <div class="quoi">
+        <span class="titre">Application chauffeur</span>
+        <span class="detail">Recevoir des courses, se mettre en service</span>
+      </div>
+      <a class="bouton" href="https://expo.dev/accounts/ttokkee/projects/taxi-dz-driver/builds/3362c74b-671b-4c87-9359-4e4464b1766d">Installer l'APK</a>
+    </div>
+    <div class="carte">
+      <div class="quoi">
+        <span class="titre">Application passager</span>
+        <span class="detail">Commander une course, suivre son chauffeur</span>
+      </div>
+      <a class="bouton" href="https://expo.dev/accounts/ttokkee/projects/taxi-dz-passenger/builds/f2fdee9a-fae6-4e5b-911b-92f8285e68d6">Installer l'APK</a>
+    </div>
+  </div>
+
+  <h2>iPhone</h2>
+  <p class="sous">
+    Deux voies. L'installation directe ne fonctionne que si votre iPhone a été enregistré au
+    préalable ; TestFlight ouvrira l'accès à tout le monde.
+  </p>
+  <div class="acces">
+    <div class="carte">
+      <div class="quoi">
+        <span class="titre">Application chauffeur</span>
+        <span class="detail">Appareils enregistrés uniquement</span>
+      </div>
+      <a class="bouton" href="https://expo.dev/accounts/ttokkee/projects/taxi-dz-driver/builds/f1fbe4e6-047f-4c35-a957-8ecd89435123">Installer</a>
+    </div>
+    <div class="carte">
+      <div class="quoi">
+        <span class="titre">Application passager</span>
+        <span class="detail">Appareils enregistrés uniquement</span>
+      </div>
+      <a class="bouton" href="https://expo.dev/accounts/ttokkee/projects/taxi-dz-passenger/builds/ce0e472c-51a3-4551-b471-1cf841ee0d2f">Installer</a>
+    </div>
+    <div class="carte">
+      <div class="quoi">
+        <span class="titre">TestFlight — les deux applications</span>
+        <span class="detail">Sans enregistrer votre appareil</span>
+      </div>
+      <span class="attente">Lien à venir</span>
+    </div>
+  </div>
+  <div class="avis">
+    <p><b>Sur iPhone, les notifications n'arrivent pas</b> — c'est voulu, pas une panne. Elles ne
+    sont activées que sur Android pour l'instant. Tout le reste fonctionne à l'identique.</p>
+  </div>
+
+  <h2>Comptes d'essai</h2>
+  <p class="sous">Le code de vérification est le même pour tous : <b class="mono">123456</b>.</p>
+  <div class="cadre">
+    <table>
+      <thead>
+        <tr><th>Rôle</th><th>Numéro</th><th>À savoir</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Chauffeur</td>
+          <td class="mono">+213 555 000 007</td>
+          <td>Mourad — actif, autorisation en vigueur. Le seul à utiliser pour recevoir des courses.</td>
+        </tr>
+        <tr>
+          <td>Passagère</td>
+          <td class="mono">+213 555 000 001</td>
+          <td>Yasmine — historique de courses, adresses enregistrées.</td>
+        </tr>
+        <tr>
+          <td>Passager</td>
+          <td class="mono">+213 555 000 004</td>
+          <td>Yacine — second compte, pour tester à deux en même temps.</td>
+        </tr>
+        <tr>
+          <td>Compte neuf</td>
+          <td class="mono">+213 555 000 005</td>
+          <td>Aucun profil : sert à voir le tout premier lancement, choix de langue compris.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Avant de commander</h2>
+  <p class="sous">Trois réglages, dans cet ordre. Sans le premier, rien n'arrive sur le téléphone.</p>
+  <ol class="etapes">
+    <li><strong>Activez les notifications</strong> — dans l'application, onglet <b>Compte</b>, ligne
+      <b>Notifications</b>. À faire sur les deux applications. Sur iPhone, cette ligne n'apparaît pas.</li>
+    <li><strong>Autorisez la localisation</strong> — l'application la demande au premier écran. Si
+      vous refusez puis changez d'avis, allez dans les réglages du téléphone : l'application s'en
+      aperçoit toute seule au retour, sans redémarrage.</li>
+    <li><strong>Chauffeur : mettez-vous en service</strong> — la bascule <b>En ligne</b>. Attendez
+      quelques secondes que la position se rafraîchisse avant de demander une course depuis l'autre
+      téléphone.</li>
+  </ol>
+
+  <div class="avis">
+    <p><b>La position de test, côté chauffeur.</b> Si vous testez depuis l'étranger, ou si le GPS
+    n'accroche pas à l'intérieur d'un bâtiment, l'écran d'accueil chauffeur porte une bascule qui
+    place le véhicule à <b>Alger-centre</b>. Elle suspend le GPS réel tant qu'elle est active et
+    reste en place jusqu'à ce que vous la coupiez.</p>
+    <p>Sans elle, un chauffeur trop loin du passager n'est pas retenu par l'attribution — et vous
+    chercheriez une panne là où il n'y en a pas.</p>
+  </div>
+
+  <h2>Un tour complet, dans l'ordre</h2>
+  <ol class="etapes">
+    <li><strong>La course.</strong> Depuis le passager, commandez. Le chauffeur reçoit une
+      notification, <b>application fermée</b>, en moins de quinze secondes. Acceptez, puis déroulez :
+      en approche, arrivé, démarrer, terminer.</li>
+    <li><strong>Le prix.</strong> Avant de confirmer, le passager voit une fourchette. Le montant
+      final est saisi par le chauffeur d'après son compteur — il n'est jamais pré-rempli.</li>
+    <li><strong>Faire suivre la course.</strong> Pendant le trajet, le passager peut envoyer un lien
+      à un proche. La page montre la voiture, la plaque et le prénom du chauffeur. Rien d'autre.</li>
+    <li><strong>L'appel d'urgence.</strong> Maintenez le doigt appuyé une seconde et demie. Il
+      s'enregistre puis propose d'appeler le 17. <b>L'autre personne de la course n'en sait rien</b>
+      — vérifiez-le sur l'autre téléphone.</li>
+    <li><strong>La notation.</strong> À la fin, chacun note l'autre. Les notes restent masquées
+      jusqu'à ce que les deux aient répondu.</li>
+  </ol>
+
+  <div class="avis rouge">
+    <p><b>N'appelez pas le 17 pour de vrai.</b> Le bouton compose réellement le numéro des services
+    d'urgence. Arrêtez-vous à l'écran qui le propose : l'alerte est déjà enregistrée à ce
+    moment-là, et c'est elle qu'on teste.</p>
+  </div>
+
+  <footer>
+    Environnement d'essai — données fictives, aucun paiement. Un souci, une question, une
+    remarque : notez-la et envoyez-la d'un bloc plutôt qu'au fil de l'eau, c'est plus utile pour
+    trouver les causes communes.
+  </footer>
+
+</div>
+</body>
+</html>

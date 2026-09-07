@@ -1,0 +1,39 @@
+# Déploiement de la page d'accès sur GitHub Pages.
+#
+# Ce dépôt est public pour une seule raison : GitHub Pages n'existe pas sur un dépôt privé sans plan
+# payant, et cette page doit s'ouvrir sur le téléphone d'un testeur sans compte ni installation.
+# Aucun code produit ici — une page, des liens, des consignes.
+
+name: Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deployer:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploiement.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Composer l'artefact
+        run: |
+          set -euo pipefail
+          mkdir -p site
+          cp index.html site/index.html
+          touch site/.nojekyll
+          ls -la site/
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deploiement
+        uses: actions/deploy-pages@v4
