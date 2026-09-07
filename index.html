@@ -258,6 +258,79 @@
     Ils servent à voir l'onboarding chauffeur du côté où il n'est pas fini.
   </p>
 
+  <h2>Portail entreprise</h2>
+  <p class="sous">
+    Une page web, pas une application : <a href="https://taxi-dz-portail.pages.dev">taxi-dz-portail.pages.dev</a>.
+    On s'y connecte par <b>e-mail et mot de passe</b> — pas par SMS. Mot de passe commun à tous les
+    comptes ci-dessous : <b class="mono">Portail2026!</b>
+  </p>
+
+  <div class="regle">
+    <span class="regle__t">Trois entreprises, trois états d'abonnement</span>
+    <span><b>Atlas Voyages</b> — à jour, tout fonctionne</span>
+    <span><b>Hoggar Logistique</b> — période échue, en <b>grâce</b> : on commande encore, un décompte s'affiche</span>
+    <span><b>Numidia Santé</b> — aucun abonnement : commandes suspendues</span>
+  </div>
+
+  <h3 class="bloc">Atlas Voyages — abonnement à jour</h3>
+  <p class="sous">
+    Trois règles y sont posées, et chacune se heurte à un geste différent : un <b>plafond de
+    900 DA</b> par course, <b>Alger uniquement</b>, et <b>07:00–20:00</b>. Une course chère, une
+    course hors wilaya ou une course de nuit reçoit un refus qui nomme la règle.
+  </p>
+  <div class="cadre">
+    <table>
+      <thead><tr><th>Adresse</th><th>Rôle</th><th>Ce que ce compte peut faire</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">gerant.atlas@portail.test</td><td>Gestionnaire</td>
+            <td>Tout : commander pour soi, pour un collègue ou un invité, suivre les courses de
+                l'entreprise, <b>voir les dépenses du mois</b> et les <b>factures et relevés</b></td></tr>
+        <tr><td class="mono">commande.atlas@portail.test</td><td>Commanditaire</td>
+            <td>Commander pour soi, pour un collègue ou un invité, et suivre. <b>Pas</b> d'accès aux
+                dépenses ni aux relevés — c'est une vue de direction</td></tr>
+        <tr><td class="mono">voyageur.atlas@portail.test</td><td>Voyageur</td>
+            <td>Commander <b>pour lui seul</b>. Il n'a pas l'annuaire de ses collègues, et c'est
+                voulu</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="sous">
+    Imene Boudjema (le compte voyageur) a un compte passager : c'est elle qui apparaît dans
+    « commander pour un collègue » depuis les deux autres comptes.
+  </p>
+
+  <h3 class="bloc">Hoggar Logistique — en période de grâce</h3>
+  <div class="cadre">
+    <table>
+      <thead><tr><th>Adresse</th><th>Rôle</th><th>Ce qu'on doit y voir</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">gerant.hoggar@portail.test</td><td>Gestionnaire</td>
+            <td>Un bandeau orange qui donne la date de fin et les <b>jours restants</b>. Les
+                commandes passent encore : couper un service d'entreprise sans préavis un lundi
+                matin perd le client</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="bloc">Numidia Santé — aucun abonnement</h3>
+  <div class="cadre">
+    <table>
+      <thead><tr><th>Adresse</th><th>Rôle</th><th>Ce qu'on doit y voir</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">gerant.numidia@portail.test</td><td>Gestionnaire</td>
+            <td>Un bandeau rouge, et le bouton <b>Commander désactivé</b> avec sa raison — plutôt
+                que de remplir tout le formulaire pour être refusé au dernier geste</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="avis">
+    <p><b>Le portail et les applications sont deux mondes séparés.</b> Un compte portail est une
+    adresse e-mail ; un compte passager est un numéro de téléphone. La même personne peut avoir les
+    deux, et ils ne se connaissent pas. C'est pourquoi une course commandée au portail « pour un
+    collègue » n'apparaît sur le téléphone du collègue que s'il a lui-même un compte passager.</p>
+  </div>
+
   <h2>Avant de commander</h2>
   <p class="sous">Trois réglages, dans cet ordre. Sans le premier, rien n'arrive sur le téléphone.</p>
   <ol class="etapes">
